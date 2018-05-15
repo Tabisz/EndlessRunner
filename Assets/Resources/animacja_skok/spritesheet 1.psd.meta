@@ -1,0 +1,190 @@
+fileFormatVersion: 2
+guid: 614ffb28291309843ac2538e6f27d352
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: spritesheet 1_0
+    21300002: spritesheet 1_1
+    21300004: spritesheet 1_2
+    21300006: spritesheet 1_3
+    21300008: spritesheet 1_4
+    21300010: spritesheet 1_5
+    21300012: spritesheet 1_6
+    21300014: spritesheet 1_7
+    21300016: spritesheet 1_8
+    21300018: spritesheet 1_9
+    21300020: spritesheet 1_10
+    21300022: spritesheet 1_11
+    21300024: spritesheet 1_12
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 0
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 25
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: spritesheet 1_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 56
+        width: 23
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet 1_1
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 58
+        width: 25
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet 1_2
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 58
+        width: 21
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet 1_3
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 65
+        width: 22
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet 1_4
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 62
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet 1_5
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 30
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet 1_6
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 32
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet 1_7
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 28
+        width: 21
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet 1_8
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 28
+        width: 18
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet 1_9
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 28
+        width: 16
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet 1_10
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 0
+        width: 21
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet 1_11
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 0
+        width: 19
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet 1_12
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 0
+        width: 20
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
