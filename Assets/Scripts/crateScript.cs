@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/*nieuzywany*/
 public class crateScript : MonoBehaviour {
 
 	private float maxY;
@@ -42,7 +42,7 @@ public class crateScript : MonoBehaviour {
 					GameObject.Find("Main Camera").GetComponent<LevelCreator>().gameSpeed +=1.0f;
 		
 			inPlay = false;
-			this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y - 10.0f);
+			this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y - 10.0f);// przekladanie gameobjectu poza widok kamery
 				
 		}
 	}
@@ -51,7 +51,7 @@ public class crateScript : MonoBehaviour {
 		Invoke ("placeCrate", (float)Random.Range (3, 10));
 
 	}
-	void placeCrate(){
+	void placeCrate(){// ustawianie gameobjectu 
 
 		inPlay = true;
 		releaseCrate = false;

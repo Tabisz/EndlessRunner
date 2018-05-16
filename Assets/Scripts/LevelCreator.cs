@@ -64,7 +64,7 @@ public class LevelCreator : MonoBehaviour {
 
 		collectedTiles = GameObject.Find ("tiles");
 
-		for (int i = 0; i<24; i++){
+		for (int i = 0; i<24; i++){         //spawnowanie wszystkich prefabow uzywanych do ukladania budynkow, ustawianie ich poza widokiem kamery
 			GameObject tmpg1 = Instantiate(Resources.Load("blok_lewy", typeof(GameObject))) as GameObject;
 			tmpg1.transform.parent = collectedTiles.transform.FindChild("gLeft").transform;
 			tmpg1.transform.position = Vector2.zero;
@@ -97,7 +97,7 @@ public class LevelCreator : MonoBehaviour {
 	}
 
 
-	void FixedUpdate()
+	void FixedUpdate()// przesuwanie calego obszaru gry - postac biegnie
 	{
 				if (startTime - Time.time % 5 == 0 && gameSpeed < 10) {
 						gameSpeed += 0.2f;
@@ -106,13 +106,13 @@ public class LevelCreator : MonoBehaviour {
 			gameLayer.transform.position = new Vector2 (gameLayer.transform.position.x - gameSpeed * Time.deltaTime, gameLayer.transform.position.y);
 
 
-		if (gameLayer.transform.childCount < 25) {
+		if (gameLayer.transform.childCount < 25) {// jezeli wykorzystywanych jest mniej niz 25 segmentow, pobierz segment z poza widoku kamery
 			spawnTile ();
 		}
 		
 
 
-
+                                                        //jezeli segment jest poza polem gry, przenies go do odpowiedniego miejsca gdzie bedzie czekal na ponowne wykorzystanie
 				foreach (Transform child in gameLayer.transform) {
 						if (child.position.x < outofbounceX) {
 								switch (child.gameObject.name) {
@@ -138,8 +138,8 @@ public class LevelCreator : MonoBehaviour {
 								case"Monetka(Clone)":
 										child.gameObject.transform.position = collectedTiles.transform.FindChild ("tCoins").transform.position;
 										child.gameObject.transform.parent = collectedTiles.transform.FindChild ("tCoins").transform;											
-										break;
-								case"Reward":
+										break;  
+								case"Reward":                                                                       // tu pickupy
 										GameObject.Find ("Reward").GetComponent<crateScript> ().inPlay = false;
 										break;
 								default:
@@ -152,7 +152,7 @@ public class LevelCreator : MonoBehaviour {
 				
 				}
 
-					if (coinCounter == 0 && waitCounter == 0) {
+					if (coinCounter == 0 && waitCounter == 0) {     
 						coinCounter = (int)Random.Range (5, 8);
 						waitCounter = Random.Range (6,13);
 				}
@@ -163,14 +163,14 @@ public class LevelCreator : MonoBehaviour {
 		
 		
 
-	private void fillScene () {
+	private void fillScene () {         //zapelnianie sceny jeszcze w menu
 		for(int i = 0; i<8; i++){
 			setTile("middle");
 		}
 		setTile("right");
 	}
 
-	private void setTile (string type) {
+	private void setTile (string type) {        //pobieranie odpowiedniego segmentu z poza gry
 
 		switch (type) {
 		case"left":
@@ -192,7 +192,7 @@ public class LevelCreator : MonoBehaviour {
 		tilePos = tmpTile;
 		lastTile = type;
 	}
-	private void spawnTile(){
+	private void spawnTile(){       // ustawianie segmentow w budynki
 
 
 
@@ -211,10 +211,10 @@ public class LevelCreator : MonoBehaviour {
 			middleCounter--;
 			return;
 		}
-		if (lastTile == "blank") {
+		if (lastTile == "blank") {              // losowanie dlugosci budynkow i odstepu miedzy nimi
 
 			//changeHeight ();
-						setTile ("left");
+						setTile ("left");                   
 						middleCounter = (int)Random.Range (1, 4);
 				} else if (lastTile == "right") {
 						changeHeight ();
@@ -235,7 +235,7 @@ public class LevelCreator : MonoBehaviour {
 
 		}
 
-	private void changeHeight(){
+	private void changeHeight(){                    // losowanie wysokosci tak zeby nie wychodzily poza jakis zakres i zeby dalo sie na nie wskoczyc
 		int newHeightLevel = (int)Random.Range (1, 4);
 
 
@@ -265,7 +265,7 @@ public class LevelCreator : MonoBehaviour {
 		
 		}
 
-		if (heightLevel == 2 | heightLevel == 3) {
+		if (heightLevel == 2 | heightLevel == 3) {              // zmiana koloru budynkow w zaleznosci od wysokosci
 
 						foreach (Transform child in collectedTiles.transform.FindChild("gLeft")) {
 								child.gameObject.GetComponent<SpriteRenderer> ().sprite = L1sprite;

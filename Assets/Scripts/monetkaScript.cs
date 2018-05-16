@@ -39,7 +39,7 @@ public class monetkaScript : MonoBehaviour {
 	// Update is called once per frame
 
 
-	void OnTriggerEnter2D(Collider2D coll){
+	void OnTriggerEnter2D(Collider2D coll){ 
 		
 		if (coll.gameObject.tag == "Player") {
 			scoH.AddScore(scoreValue);

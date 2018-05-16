@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/* skrypt uruchamia gre z poziomu menu */
 public class Begin : MonoBehaviour {
 
 	private Tiling tiling1;
@@ -40,7 +41,7 @@ public class Begin : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!isMenu) {
+		if (!isMenu) {/* oddalanie kamery przy starcie gry*/
 			Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position,end,0.01f);
 			if(Camera.main.orthographicSize<6.29f){
 				Camera.main.orthographicSize += 2f *Time.deltaTime;

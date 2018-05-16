@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class up_down : MonoBehaviour {
-
+    //skrypt do sterowania kamera w osi y
 	 GameObject pla;
 	private float odleglosc;
 
