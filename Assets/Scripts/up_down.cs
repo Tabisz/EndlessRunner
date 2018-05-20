@@ -5,6 +5,7 @@ public class up_down : MonoBehaviour {
     //skrypt do sterowania kamera w osi y
 	 GameObject pla;
 	private float odleglosc;
+    public float minLevel =-1;
 
 
 
@@ -14,7 +15,7 @@ public class up_down : MonoBehaviour {
 		}
 
 	void Update(){
-				if (this.transform.position.y < 7 & this.transform.position.y > -1) {
+				if (/*pla.transform.position.y < 10 &*/ pla.transform.position.y > minLevel-2) {
 						odleglosc = pla.transform.position.y - transform.position.y + 2f;
 						if (odleglosc > 0)
 								transform.position = new Vector3 (transform.position.x, transform.position.y + 0.5f * odleglosc * Time.deltaTime, transform.position.z);

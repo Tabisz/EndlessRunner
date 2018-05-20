@@ -5,12 +5,17 @@ using System.Collections;
 public class LevelCreator : MonoBehaviour {
 
 
+    public FogScript fogScript;
+    public up_down upDown;
+
 
 	public GameObject tilePos;
 	private float startUpPosY;
 	private  float tileWidth = 2.66f;
 	public float hightSpacing = 0.5f;
 	public int heightLevel = 0;
+    public int activeTilesCount = 25;
+
 	private GameObject tmpTile;
 	private GameObject tmpCoin;
 
@@ -27,19 +32,25 @@ public class LevelCreator : MonoBehaviour {
 	private string lastTile = "right";
 	private float startTime;
 
-	public Sprite L1sprite;
-	public Sprite M1sprite;
-	public Sprite R1sprite;
+    [System.Serializable]
+    public class BuildingSprites
+    {
+        public Sprite L1sprite;
+        public Sprite M1sprite;
+        public Sprite R1sprite;
 
-	public Sprite L2sprite;
-	public Sprite M2sprite;
-	public Sprite R2sprite;
+        public Sprite L2sprite;
+        public Sprite M2sprite;
+        public Sprite R2sprite;
 
-	public Sprite L3sprite;
-	public Sprite M3sprite;
-	public Sprite R3sprite;
+        public Sprite L3sprite;
+        public Sprite M3sprite;
+        public Sprite R3sprite;
 
-	public ScoreHandler scoH;
+    }
+    
+    public BuildingSprites buildingSprites;
+    public ScoreHandler scoH;
 
 	public bool isMenu = true;
 
@@ -57,7 +68,6 @@ public class LevelCreator : MonoBehaviour {
 
 	
 	void Start () {
-
 			
 
 		gameLayer = GameObject.Find ("gameLayer");
@@ -106,7 +116,7 @@ public class LevelCreator : MonoBehaviour {
 			gameLayer.transform.position = new Vector2 (gameLayer.transform.position.x - gameSpeed * Time.deltaTime, gameLayer.transform.position.y);
 
 
-		if (gameLayer.transform.childCount < 25) {// jezeli wykorzystywanych jest mniej niz 25 segmentow, pobierz segment z poza widoku kamery
+		if (gameLayer.transform.childCount < activeTilesCount) {// jezeli wykorzystywanych jest mniej niz 25 segmentow, pobierz segment z poza widoku kamery
 			spawnTile ();
 		}
 		
@@ -232,14 +242,15 @@ public class LevelCreator : MonoBehaviour {
 		tmpCoin = collectedTiles.transform.FindChild("tCoins").transform.GetChild(0).gameObject;
 		tmpCoin.transform.parent = gameLayer.transform;
 		tmpCoin.transform.position = new Vector2 (tilePos.transform.position.x+(tileWidth),startUpPosY + (heightLevel*hightSpacing)+6.0f);
-
+        
 		}
 
 	private void changeHeight(){                    // losowanie wysokosci tak zeby nie wychodzily poza jakis zakres i zeby dalo sie na nie wskoczyc
 		int newHeightLevel = (int)Random.Range (1, 4);
+        //fogScript.CurrentLevel = heightLevel * hightSpacing;
+        upDown.minLevel = heightLevel * hightSpacing;
 
-
-		switch (newHeightLevel) {				// 2 <= heightlevel => 5		_-_4 wysokości budynkow
+        switch (newHeightLevel) {				// 2 <= heightlevel => 5		_-_4 wysokości budynkow
 
 		case 1:
 			heightLevel++;
@@ -268,20 +279,20 @@ public class LevelCreator : MonoBehaviour {
 		if (heightLevel == 2 | heightLevel == 3) {              // zmiana koloru budynkow w zaleznosci od wysokosci
 
 						foreach (Transform child in collectedTiles.transform.FindChild("gLeft")) {
-								child.gameObject.GetComponent<SpriteRenderer> ().sprite = L1sprite;
+								child.gameObject.GetComponent<SpriteRenderer> ().sprite = buildingSprites.L1sprite;
 								child.gameObject.GetComponent<BoxCollider2D> ().size = Jcollider;
 								
 
 						}
 
 						foreach (Transform child in collectedTiles.transform.FindChild("gRight")) {
-								child.gameObject.GetComponent<SpriteRenderer> ().sprite = R1sprite;
+								child.gameObject.GetComponent<SpriteRenderer> ().sprite = buildingSprites.R1sprite;
 								child.gameObject.GetComponent<BoxCollider2D> ().size = Jcollider;
 								
 						}
 
 						foreach (Transform child in collectedTiles.transform.FindChild("gMiddle")) {
-								child.gameObject.GetComponent<SpriteRenderer> ().sprite = M1sprite;
+								child.gameObject.GetComponent<SpriteRenderer> ().sprite = buildingSprites.M1sprite;
 								child.gameObject.GetComponent<BoxCollider2D> ().size =Jcollider;
 						}
 				
@@ -289,7 +300,7 @@ public class LevelCreator : MonoBehaviour {
 		} if(heightLevel == 4) {
 						
 						foreach (Transform child in collectedTiles.transform.FindChild("gLeft")) {
-								child.gameObject.GetComponent<SpriteRenderer> ().sprite = L2sprite;
+								child.gameObject.GetComponent<SpriteRenderer> ().sprite = buildingSprites.L2sprite;
 								child.gameObject.GetComponent<BoxCollider2D> ().size = Jcollider;
 								
 								
@@ -297,13 +308,13 @@ public class LevelCreator : MonoBehaviour {
 						}
 			
 						foreach (Transform child in collectedTiles.transform.FindChild("gRight")) {
-								child.gameObject.GetComponent<SpriteRenderer> ().sprite = R2sprite;
+								child.gameObject.GetComponent<SpriteRenderer> ().sprite = buildingSprites.R2sprite;
 								child.gameObject.GetComponent<BoxCollider2D> ().size = Jcollider;
 								
 						}
 			
 						foreach (Transform child in collectedTiles.transform.FindChild("gMiddle")) {
-								child.gameObject.GetComponent<SpriteRenderer> ().sprite = M2sprite;
+								child.gameObject.GetComponent<SpriteRenderer> ().sprite = buildingSprites.M2sprite;
 								child.gameObject.GetComponent<BoxCollider2D> ().size = Jcollider;
 						}
 						
@@ -311,7 +322,7 @@ public class LevelCreator : MonoBehaviour {
 		if(heightLevel == 5) {
 			
 			foreach (Transform child in collectedTiles.transform.FindChild("gLeft")) {
-				child.gameObject.GetComponent<SpriteRenderer> ().sprite = L3sprite;
+				child.gameObject.GetComponent<SpriteRenderer> ().sprite = buildingSprites.L3sprite;
 				child.gameObject.GetComponent<BoxCollider2D> ().size = Jcollider;
 
 				
@@ -319,13 +330,13 @@ public class LevelCreator : MonoBehaviour {
 			}
 			
 			foreach (Transform child in collectedTiles.transform.FindChild("gRight")) {
-				child.gameObject.GetComponent<SpriteRenderer> ().sprite = R3sprite;
+				child.gameObject.GetComponent<SpriteRenderer> ().sprite = buildingSprites.R3sprite;
 				child.gameObject.GetComponent<BoxCollider2D> ().size = Jcollider;
 
 			}
 			
 			foreach (Transform child in collectedTiles.transform.FindChild("gMiddle")) {
-				child.gameObject.GetComponent<SpriteRenderer> ().sprite = M3sprite;
+				child.gameObject.GetComponent<SpriteRenderer> ().sprite = buildingSprites.M3sprite;
 				child.gameObject.GetComponent<BoxCollider2D> ().size = Jcollider;
 			}
 			
