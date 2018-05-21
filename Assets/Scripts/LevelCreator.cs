@@ -75,21 +75,21 @@ public class LevelCreator : MonoBehaviour {
 		collectedTiles = GameObject.Find ("tiles");
 
 		for (int i = 0; i<24; i++){         //spawnowanie wszystkich prefabow uzywanych do ukladania budynkow, ustawianie ich poza widokiem kamery
-			GameObject tmpg1 = Instantiate(Resources.Load("blok_lewy", typeof(GameObject))) as GameObject;
+			GameObject tmpg1 = Instantiate(Resources.Load("Prefabs/blok_lewy", typeof(GameObject))) as GameObject;
 			tmpg1.transform.parent = collectedTiles.transform.FindChild("gLeft").transform;
 			tmpg1.transform.position = Vector2.zero;
-			GameObject tmpg2 = Instantiate(Resources.Load("blok_prawy", typeof(GameObject))) as GameObject;
+			GameObject tmpg2 = Instantiate(Resources.Load("Prefabs/blok_prawy", typeof(GameObject))) as GameObject;
 			tmpg2.transform.parent = collectedTiles.transform.FindChild("gRight").transform;
 			tmpg2.transform.position = Vector2.zero;
-			GameObject tmpg3 = Instantiate(Resources.Load("blok_srodek", typeof(GameObject))) as GameObject;
+			GameObject tmpg3 = Instantiate(Resources.Load("Prefabs/blok_srodek", typeof(GameObject))) as GameObject;
 			tmpg3.transform.parent = collectedTiles.transform.FindChild("gMiddle").transform;
 			tmpg3.transform.position = Vector2.zero;
-			GameObject tmpg4 = Instantiate(Resources.Load("blank", typeof(GameObject))) as GameObject;
+			GameObject tmpg4 = Instantiate(Resources.Load("Prefabs/blank", typeof(GameObject))) as GameObject;
 			tmpg4.transform.parent = collectedTiles.transform.FindChild("gBlank").transform;
 			tmpg4.transform.position = Vector2.zero;
  		}
 		for (int i = 0; i<16; i++) {
-			GameObject tCoin = Instantiate(Resources.Load("Monetka",typeof(GameObject))) as GameObject;
+			GameObject tCoin = Instantiate(Resources.Load("Prefabs/Monetka",typeof(GameObject))) as GameObject;
 			tCoin.transform.parent = collectedTiles.transform.FindChild("tCoins").transform;
 			tCoin.transform.position = Vector2.zero;
 				}
