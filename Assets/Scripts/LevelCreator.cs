@@ -76,21 +76,21 @@ public class LevelCreator : MonoBehaviour {
 
 		for (int i = 0; i<24; i++){         //spawnowanie wszystkich prefabow uzywanych do ukladania budynkow, ustawianie ich poza widokiem kamery
 			GameObject tmpg1 = Instantiate(Resources.Load("Prefabs/blok_lewy", typeof(GameObject))) as GameObject;
-			tmpg1.transform.parent = collectedTiles.transform.FindChild("gLeft").transform;
+			tmpg1.transform.parent = collectedTiles.transform.Find("gLeft").transform;
 			tmpg1.transform.position = Vector2.zero;
 			GameObject tmpg2 = Instantiate(Resources.Load("Prefabs/blok_prawy", typeof(GameObject))) as GameObject;
-			tmpg2.transform.parent = collectedTiles.transform.FindChild("gRight").transform;
+			tmpg2.transform.parent = collectedTiles.transform.Find("gRight").transform;
 			tmpg2.transform.position = Vector2.zero;
 			GameObject tmpg3 = Instantiate(Resources.Load("Prefabs/blok_srodek", typeof(GameObject))) as GameObject;
-			tmpg3.transform.parent = collectedTiles.transform.FindChild("gMiddle").transform;
+			tmpg3.transform.parent = collectedTiles.transform.Find("gMiddle").transform;
 			tmpg3.transform.position = Vector2.zero;
 			GameObject tmpg4 = Instantiate(Resources.Load("Prefabs/blank", typeof(GameObject))) as GameObject;
-			tmpg4.transform.parent = collectedTiles.transform.FindChild("gBlank").transform;
+			tmpg4.transform.parent = collectedTiles.transform.Find("gBlank").transform;
 			tmpg4.transform.position = Vector2.zero;
  		}
 		for (int i = 0; i<16; i++) {
 			GameObject tCoin = Instantiate(Resources.Load("Prefabs/Monetka",typeof(GameObject))) as GameObject;
-			tCoin.transform.parent = collectedTiles.transform.FindChild("tCoins").transform;
+			tCoin.transform.parent = collectedTiles.transform.Find("tCoins").transform;
 			tCoin.transform.position = Vector2.zero;
 				}
 		collectedTiles.transform.position = new Vector2(-60.0f, -20.0f);
@@ -128,26 +128,26 @@ public class LevelCreator : MonoBehaviour {
 								switch (child.gameObject.name) {
 								case"blok_lewy(Clone)":
 
-										child.gameObject.transform.position = collectedTiles.transform.FindChild ("gLeft").transform.position;
-										child.gameObject.transform.parent = collectedTiles.transform.FindChild ("gLeft").transform;
+										child.gameObject.transform.position = collectedTiles.transform.Find ("gLeft").transform.position;
+										child.gameObject.transform.parent = collectedTiles.transform.Find ("gLeft").transform;
 										break;
 								case"blok_srodek(Clone)":
 										if(waitCounter>0)
 										waitCounter--;
-										child.gameObject.transform.position = collectedTiles.transform.FindChild ("gMiddle").transform.position;
-										child.gameObject.transform.parent = collectedTiles.transform.FindChild ("gMiddle").transform;
+										child.gameObject.transform.position = collectedTiles.transform.Find ("gMiddle").transform.position;
+										child.gameObject.transform.parent = collectedTiles.transform.Find ("gMiddle").transform;
 										break;
 								case"blok_prawy(Clone)":
-										child.gameObject.transform.position = collectedTiles.transform.FindChild ("gRight").transform.position;
-										child.gameObject.transform.parent = collectedTiles.transform.FindChild ("gRight").transform;
+										child.gameObject.transform.position = collectedTiles.transform.Find ("gRight").transform.position;
+										child.gameObject.transform.parent = collectedTiles.transform.Find ("gRight").transform;
 										break;
 								case"blank(Clone)":
-										child.gameObject.transform.position = collectedTiles.transform.FindChild ("gBlank").transform.position;
-										child.gameObject.transform.parent = collectedTiles.transform.FindChild ("gBlank").transform;
+										child.gameObject.transform.position = collectedTiles.transform.Find ("gBlank").transform.position;
+										child.gameObject.transform.parent = collectedTiles.transform.Find ("gBlank").transform;
 										break;
 								case"Monetka(Clone)":
-										child.gameObject.transform.position = collectedTiles.transform.FindChild ("tCoins").transform.position;
-										child.gameObject.transform.parent = collectedTiles.transform.FindChild ("tCoins").transform;											
+										child.gameObject.transform.position = collectedTiles.transform.Find ("tCoins").transform.position;
+										child.gameObject.transform.parent = collectedTiles.transform.Find ("tCoins").transform;											
 										break;  
 								case"Reward":                                                                       // tu pickupy
 										GameObject.Find ("Reward").GetComponent<crateScript> ().inPlay = false;
@@ -184,16 +184,16 @@ public class LevelCreator : MonoBehaviour {
 
 		switch (type) {
 		case"left":
-				tmpTile = collectedTiles.transform.FindChild("gLeft").transform.GetChild(0).gameObject;
+				tmpTile = collectedTiles.transform.Find("gLeft").transform.GetChild(0).gameObject;
 		break;
 		case"right":
-				tmpTile = collectedTiles.transform.FindChild("gRight").transform.GetChild(0).gameObject;
+				tmpTile = collectedTiles.transform.Find("gRight").transform.GetChild(0).gameObject;
 		break;
 		case"middle":
-				tmpTile = collectedTiles.transform.FindChild("gMiddle").transform.GetChild(0).gameObject;
+				tmpTile = collectedTiles.transform.Find("gMiddle").transform.GetChild(0).gameObject;
 			break;
 		case"blank":
-				tmpTile = collectedTiles.transform.FindChild("gBlank").transform.GetChild(0).gameObject;
+				tmpTile = collectedTiles.transform.Find("gBlank").transform.GetChild(0).gameObject;
 			break;
 					}
 		tmpTile.transform.parent = gameLayer.transform;
@@ -239,7 +239,7 @@ public class LevelCreator : MonoBehaviour {
 	}
 
 	private void setCoin(){
-		tmpCoin = collectedTiles.transform.FindChild("tCoins").transform.GetChild(0).gameObject;
+		tmpCoin = collectedTiles.transform.Find("tCoins").transform.GetChild(0).gameObject;
 		tmpCoin.transform.parent = gameLayer.transform;
 		tmpCoin.transform.position = new Vector2 (tilePos.transform.position.x+(tileWidth),startUpPosY + (heightLevel*hightSpacing)+6.0f);
         
@@ -278,20 +278,20 @@ public class LevelCreator : MonoBehaviour {
 
 		if (heightLevel == 2 | heightLevel == 3) {              // zmiana koloru budynkow w zaleznosci od wysokosci
 
-						foreach (Transform child in collectedTiles.transform.FindChild("gLeft")) {
+						foreach (Transform child in collectedTiles.transform.Find("gLeft")) {
 								child.gameObject.GetComponent<SpriteRenderer> ().sprite = buildingSprites.L1sprite;
 								child.gameObject.GetComponent<BoxCollider2D> ().size = Jcollider;
 								
 
 						}
 
-						foreach (Transform child in collectedTiles.transform.FindChild("gRight")) {
+						foreach (Transform child in collectedTiles.transform.Find("gRight")) {
 								child.gameObject.GetComponent<SpriteRenderer> ().sprite = buildingSprites.R1sprite;
 								child.gameObject.GetComponent<BoxCollider2D> ().size = Jcollider;
 								
 						}
 
-						foreach (Transform child in collectedTiles.transform.FindChild("gMiddle")) {
+						foreach (Transform child in collectedTiles.transform.Find("gMiddle")) {
 								child.gameObject.GetComponent<SpriteRenderer> ().sprite = buildingSprites.M1sprite;
 								child.gameObject.GetComponent<BoxCollider2D> ().size =Jcollider;
 						}
@@ -299,7 +299,7 @@ public class LevelCreator : MonoBehaviour {
 				
 		} if(heightLevel == 4) {
 						
-						foreach (Transform child in collectedTiles.transform.FindChild("gLeft")) {
+						foreach (Transform child in collectedTiles.transform.Find("gLeft")) {
 								child.gameObject.GetComponent<SpriteRenderer> ().sprite = buildingSprites.L2sprite;
 								child.gameObject.GetComponent<BoxCollider2D> ().size = Jcollider;
 								
@@ -307,13 +307,13 @@ public class LevelCreator : MonoBehaviour {
 				
 						}
 			
-						foreach (Transform child in collectedTiles.transform.FindChild("gRight")) {
+						foreach (Transform child in collectedTiles.transform.Find("gRight")) {
 								child.gameObject.GetComponent<SpriteRenderer> ().sprite = buildingSprites.R2sprite;
 								child.gameObject.GetComponent<BoxCollider2D> ().size = Jcollider;
 								
 						}
 			
-						foreach (Transform child in collectedTiles.transform.FindChild("gMiddle")) {
+						foreach (Transform child in collectedTiles.transform.Find("gMiddle")) {
 								child.gameObject.GetComponent<SpriteRenderer> ().sprite = buildingSprites.M2sprite;
 								child.gameObject.GetComponent<BoxCollider2D> ().size = Jcollider;
 						}
@@ -321,7 +321,7 @@ public class LevelCreator : MonoBehaviour {
 				}
 		if(heightLevel == 5) {
 			
-			foreach (Transform child in collectedTiles.transform.FindChild("gLeft")) {
+			foreach (Transform child in collectedTiles.transform.Find("gLeft")) {
 				child.gameObject.GetComponent<SpriteRenderer> ().sprite = buildingSprites.L3sprite;
 				child.gameObject.GetComponent<BoxCollider2D> ().size = Jcollider;
 
@@ -329,13 +329,13 @@ public class LevelCreator : MonoBehaviour {
 				
 			}
 			
-			foreach (Transform child in collectedTiles.transform.FindChild("gRight")) {
+			foreach (Transform child in collectedTiles.transform.Find("gRight")) {
 				child.gameObject.GetComponent<SpriteRenderer> ().sprite = buildingSprites.R3sprite;
 				child.gameObject.GetComponent<BoxCollider2D> ().size = Jcollider;
 
 			}
 			
-			foreach (Transform child in collectedTiles.transform.FindChild("gMiddle")) {
+			foreach (Transform child in collectedTiles.transform.Find("gMiddle")) {
 				child.gameObject.GetComponent<SpriteRenderer> ().sprite = buildingSprites.M3sprite;
 				child.gameObject.GetComponent<BoxCollider2D> ().size = Jcollider;
 			}

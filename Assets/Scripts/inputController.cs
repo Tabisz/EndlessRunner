@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class inputController : MonoBehaviour {
 
@@ -51,14 +52,43 @@ public class inputController : MonoBehaviour {
 				}
 
 }
-	void OnTriggerEnter2D(Collider2D coll){
-		if (coll.gameObject.tag == "Player") {		
+	void OnTriggerEnter2D(Collider2D coll)
+    {
+		if (coll.gameObject.tag == "Player")
+        {	
+            
 			StartCoroutine(LoadNew());
 			fadeTime = GameObject.Find("Player").GetComponent<Fading>().BeginFade(1);
+            SaveScore();
 						
-				}
-
 		}
+
+	}
+    void SaveScore()
+    {
+        List<int> scores = new List<int>();
+        for (int i = 0; i < 10; i++)
+        {
+            scores.Add(PlayerPrefs.GetInt("score"+ i.ToString(), 0));
+        }
+        scores.Add(ScoreHandler.score);
+        scores.Sort( );
+        scores.Reverse();
+        for (int i = 0; i < 10; i++)
+        {
+            PlayerPrefs.SetInt("score" + i.ToString(), scores[i]);
+        }
+
+        //if (PlayerPrefs.GetInt("score" + i.ToString(), -1) < ScoreHandler.score)
+        //{
+        //PlayerPrefs.SetInt("score" + i.ToString(), ScoreHandler.score);
+        //return;
+        //}
+
+    }
+
+
+
 	IEnumerator LoadNew(){
 		yield return new WaitForSeconds(fadeTime);
 		//Application.LoadLevel ("Die");

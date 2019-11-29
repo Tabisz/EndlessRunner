@@ -18,15 +18,20 @@ public class MenuScript : MonoBehaviour {
 		StartCoroutine(LoadNew("Quit"));
 	}
 
+    public void ClearTable()
+    {
+        PlayerPrefs.DeleteAll();
+        OnClickPlay();
+    }
 
-	IEnumerator LoadNew(string level){
+
+    IEnumerator LoadNew(string level){
 		fadeTime = GameObject.Find("Main Camera").GetComponent<Fading>().BeginFade(1);
 		yield return new WaitForSeconds(fadeTime);
 		if(level == "Quit")
 			Application.Quit();
-		//Application.LoadLevel (level);
-
-		SceneManager.LoadScene (level);
+        else
+		    SceneManager.LoadScene (level);
 
 
 
